@@ -2,6 +2,7 @@ package io.javabrains.springbootstarter.topic;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TopicController {
 	
 	@Autowired
-	private TopicSerice topicService;
+	private TopicService topicService;
 	
 	@RequestMapping("/topics")
 	//@RequestMapping(value="/topics",method=RequestMethod.GET)   <---Default Request mapping
@@ -24,7 +25,7 @@ public class TopicController {
 	}
 	
 	@RequestMapping("/topics/{ID}")
-	public Topic getTopic(@PathVariable("ID") String id) {
+	public Optional<Topic> getTopic(@PathVariable("ID") String id) {
 		return topicService.getTopic(id);
 		
 	}
@@ -38,7 +39,7 @@ public class TopicController {
 	// update data
 	@RequestMapping(value="/topics/{ID}",method=RequestMethod.PUT)
 	public void updateTopic(@RequestBody  Topic topic ,@PathVariable("ID") String id ) {
-		topicService.updateTopic(id,topic);
+		topicService.updateTopic(topic);
 		
 	}
 	

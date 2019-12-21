@@ -1,8 +1,17 @@
 package io.javabrains.springbootstarter.topic;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+
+@Entity
 public class Topic {
+	
+	@Id
 	String id;
+	
 	String name;
+	
 	String description;
 
 	public Topic(String id, String name, String description) {
